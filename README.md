@@ -1,10 +1,8 @@
 # Financial Events Radar
 
-![Financial Events Radar Screenshot](https://storage.googleapis.com/gemini-marc-resources/financial-events-radar-screenshot.png)
-
 A sophisticated, real-time dashboard that displays upcoming and past macroeconomic and corporate earnings announcements. This tool is designed to provide traders, investors, and financial enthusiasts with a clear and interactive view of market-moving events, powered by the Google Gemini API with Google Search grounding for up-to-the-minute data.
 
-**[➡️ View Live Demo](https://your-github-username.github.io/your-repo-name/)** *(Replace with your GitHub Pages link after deployment)*
+**[➡️ View Live Demo](https://klmtseng.github.io/Financial-Events-Radar/)**
 
 ---
 
