@@ -1,0 +1,5 @@
+{
+  "name": "Financial Events Radar",
+  "description": "Get upcoming macroeconomic and corporate earnings announcements for the next 7 days, powered by Gemini.",
+  "requestFramePermissions": []
+}

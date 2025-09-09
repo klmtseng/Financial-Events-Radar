@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Events Radar</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^0.12.0"
+        }
+      }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <div id="sticky-header-container">
+            <header>
+                <div class="container">
+                    <div class="header-main">
+                        <h1>Financial Events Radar</h1>
+                        <div class="header-filters">
+                            <div class="filters" role="tablist" aria-label="Time Filters">
+                                <button id="filter-24h" role="tab" aria-selected="false">Next 24 Hours</button>
+                                <button id="filter-7d" role="tab" aria-selected="true" class="active">Next 7 Days</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="live-clock"></div>
+                </div>
+            </header>
+            <div id="column-headers" class="container" style="display: none;">
+                <h2><span class="indicator macro"></span>Macroeconomic Events</h2>
+                <h2><span class="indicator corp"></span>Corporate Earnings</h2>
+            </div>
+        </div>
+
+        <main class="container">
+            <div id="loader" class="loader-container" aria-label="Loading events">
+                <div class="spinner"></div>
+                <p>Fetching latest financial events...</p>
+            </div>
+
+            <div id="error-view" class="error-container" style="display: none;">
+                <h2>Oops! Something went wrong.</h2>
+                <p>We couldn't fetch the financial events at this time. Please try again later.</p>
+            </div>
+
+            <div id="content-view" style="display: none;">
+                <div id="events-grid">
+                    <div class="events-column">
+                        <div id="macro-events-container"></div>
+                    </div>
+                    <div class="events-column">
+                        <div id="corp-events-container"></div>
+                    </div>
+                </div>
+                 <div id="no-events-view" class="no-events-message" style="display: none;">
+                    No upcoming events in this timeframe.
+                </div>
+
+                <div id="past-events-section">
+                    <button id="past-events-toggle" class="accordion-toggle" aria-expanded="false" aria-controls="past-events-content">
+                        <span>View Past 3 Days' Events</span>
+                        <svg class="chevron-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div id="past-events-content" class="accordion-content">
+                        <div id="past-events-grid">
+                            <div class="events-column">
+                                <div id="past-macro-events-container"></div>
+                            </div>
+                            <div class="events-column">
+                                <div id="past-corp-events-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="floating-subscribe">
+            <div class="subscribe-tab">
+                <span>Subscribe</span>
+            </div>
+            <div class="subscribe-content container">
+                <div class="subscribe-inner-content">
+                    <div class="subscribe-header">
+                        <h2>Stay Ahead of the Market</h2>
+                        <p>Get weekly digests of key events directly in your inbox.</p>
+                    </div>
+                    <form id="subscribe-form">
+                        <input type="email" id="email-input" placeholder="Enter your email" required aria-label="Email for subscription">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+                <div id="subscribe-success" style="display: none;">
+                    <p>✅ Thank you for subscribing!</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <p class="disclaimer">Powered by Gemini. For informational purposes only.</p>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="index.tsx"></script>
+    <div id="tooltip" class="tooltip" role="tooltip" aria-hidden="true"></div>
+</body>
+</html>
